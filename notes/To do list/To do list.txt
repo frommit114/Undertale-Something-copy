@@ -1,0 +1,9 @@
+battle related:
+- make the attack change accordingly with the player weapon
+
+
+Other:
+-functional saving and loading for weapons and armor
+
+stuff for the future:
+cutscenes

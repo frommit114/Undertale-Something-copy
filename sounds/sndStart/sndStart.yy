@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sndStart",
+  "audioGroupId":{
+    "name":"audiogroup_sfx",
+    "path":"audiogroups/audiogroup_sfx",
+  },
+  "bitDepth":1,
+  "bitRate":320,
+  "compression":0,
+  "conversionMode":0,
+  "duration":2.825896,
+  "name":"sndStart",
+  "parent":{
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
+  },
+  "preload":true,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sndStart",
+  "type":1,
+  "volume":1.0,
+}

@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"musGameOver",
+  "audioGroupId":{
+    "name":"audiogroup_mus",
+    "path":"audiogroups/audiogroup_mus",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":1,
+  "conversionMode":0,
+  "duration":50.433743,
+  "name":"musGameOver",
+  "parent":{
+    "name":"Music",
+    "path":"folders/Sounds/Music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"musGameOver.ogg",
+  "type":0,
+  "volume":1.0,
+}

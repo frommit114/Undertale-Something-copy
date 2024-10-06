@@ -1,0 +1,1 @@
+GetRoomAndZone("Test Room 1", "The void");

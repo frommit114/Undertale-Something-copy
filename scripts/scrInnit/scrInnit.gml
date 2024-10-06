@@ -1,0 +1,2 @@
+global.RoomName = "";
+global.Zone = "";
