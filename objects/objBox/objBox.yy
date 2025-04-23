@@ -1,7 +1,9 @@
 {
   "$GMObject":"",
   "%Name":"objBox",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"objPlayerInteractionBox","path":"objects/objPlayerInteractionBox/objPlayerInteractionBox.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"objBox",
   "overriddenProperties":[],
@@ -9,7 +11,10 @@
     "name":"Interactebles",
     "path":"folders/Objects/Overworld/Interactebles.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"objWall",
+    "path":"objects/objWall/objWall.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

@@ -32,10 +32,9 @@ switch ( position[page] )
 }
 
 
-
 if instance_exists(objPlayer) && objPlayer.y + 30 >= textbox_y && room != rmBattle
 {
-textbox_y = camera_get_view_y( view_camera[0] ) + 10;
+	textbox_y = camera_get_view_y( view_camera[0] ) + 10;
 }
 
 
@@ -81,7 +80,7 @@ if setup == false
 		 if char[c, p] == " " { last_free_space = _char_pos+1  }
 		 
 	     // get the line breaks
-		if _current_txt_w - line_break_offset[p] > line_width or break_line[c,p] == true
+		if _current_txt_w - line_break_offset[p] > line_width || break_line[c,p] == true
 		{ 
 			
 		line_break_pos[ line_break_num[p] , p ] = last_free_space;
@@ -131,48 +130,37 @@ if setup == false
 //--------------------------typing the text--------------------------//
 if text_pause_timer <= 0 
 {
-if draw_char < text_length[page]
-		{
+	if draw_char < text_length[page]
+	{
 		 draw_char += text_spd;
 		 draw_char = clamp(draw_char, 0, text_length[page]);
 		 var _check_char = string_char_at(text[page], draw_char)
 		 if _check_char == "." || _check_char == "?"
 		 {
-		 text_pause_time = 20;
-		 text_pause_timer = text_pause_time;
-		 if !audio_is_playing(snd[page]) && _check_char != " " || _check_char != "," || _check_char != "*" {
-			 audio_stop_sound(snd[page])
-		 audio_play_sound(snd[page], 8, false)
-			}	
+			text_pause_timer = text_pause_time;
 		 }
-		  else 
-			{
-			 //typing sound
-				
-				if sound_count < sound_delay 
-				{ 
-					sound_count ++;
-				}
-			  else 
-			  {
-				sound_count = 0;
-				audio_play_sound(snd[page], 8, false)
-			  }
-				
-			}
-		 var _check_char = string_char_at(text[page], draw_char)
-		 if _check_char == "," {
-		 text_pause_time = 12;
-		 text_pause_timer = text_pause_time;
+		 if sound_count <= 0
+		 {
+			 if !audio_is_playing(snd[page]) && _check_char != " " || _check_char != "," || _check_char != "*" 
+			 {
+				audio_play_sound(snd[page], 8, false);
+			 }
+			 sound_count = sound_timer;
 		 }
-		}
-}  
-	else 
-	{
-	text_pause_timer --;
-	}
-//--------------------------flip through the pages--------------------------//
+		 else
+		 {
+			sound_count --;
+		 }
 
+	}
+}  
+else 
+{
+	text_pause_timer --;
+}
+	
+
+//--------------------------flip through the pages--------------------------//
 if accept_key && can_advance == true
 	{
 		
@@ -217,7 +205,6 @@ txtb_spr_w = sprite_get_width(txtb_spr[page]);
 txtb_spr_h = sprite_get_height(txtb_spr[page]);
 
 //back of the textbox
-
 if txtb_color[page] != noone
 {
 draw_sprite_ext(txtb_spr[page], txtb_img, textbox_x + text_x_offset[page], textbox_y, textbox_width / txtb_spr_w, textbox_height / txtb_spr_h, 0, txtb_color[page], 1);
@@ -259,7 +246,7 @@ if draw_char == text_length[page] && (page == page_number - 1)
 			   draw_sprite(sprSmallSoul, 0, textbox_x - 216 + _op_space*option_number + _op_space*op, textbox_y + 53 + _op_border);
 			}
 			//sounds
-			if keyboard_check_pressed(vk_right) or keyboard_check_pressed(vk_left)
+			if input_check_pressed("right") || input_check_pressed("left")
 			{
 				audio_play_sound(sndMenuMove, 1, false);
 			}

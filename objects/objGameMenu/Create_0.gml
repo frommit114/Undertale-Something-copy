@@ -22,4 +22,6 @@ op_length = array_length(options);
 menu_level = 0;
 menu_can_move = true;
 
+audio_play_sound(sndMenuMove, 1, false);
+
 

@@ -9,6 +9,7 @@ if song_asset != target_song_asset
 		array_push( fade_out_instances, song_instance );
 		array_push( fade_out_instance_vol, song_fade_in_instance_vol );
 		array_push(fade_out_instance_time, song_fade_out_time );
+		last_song_end_time = floor( audio_sound_get_track_position(song_instance) );
 		
 		//reset song instance and asset vars
 		song_instance = noone;
@@ -21,7 +22,15 @@ if song_asset != target_song_asset
 	{
 		if audio_exists( target_song_asset )
 		{
-			song_instance = audio_play_sound( target_song_asset, 4, true )
+			if (target_song_asset == musTestSong2)
+			{
+				song_instance = audio_play_sound( target_song_asset, 4, true);
+				audio_sound_set_track_position(song_instance, last_song_end_time);
+			}
+			else 
+			{
+				song_instance = audio_play_sound( target_song_asset, 4, true);
+			}
 			audio_sound_gain( song_instance, 0, 0)
 			song_fade_in_instance_vol = 0;
 		}

@@ -1,15 +1,31 @@
 function NewEncounter(_monsters, _bg)
 {
+	instance_create_depth( 0, 0, -15999, objButtonController );
 	instance_create_depth
 	(
 		0,
 		0,
 		-15999,
 	    objBulletBoard,
-		{monsters: _monsters, battle_background : _bg}
+		{monsters: _monsters, battle_background: _bg}
 		
 	);
 }
+
+function NewEncounter2(_monsters, _bg)
+{
+	instance_create_depth( 0, 0, -15999, objButtonController );
+	instance_create_depth
+	(
+		0,
+		0,
+		-15999,
+	    objBattleManager,
+		{monsters: _monsters, battle_background: _bg}
+		
+	);
+}
+
 
 function CheckSteps(_steps)
 {
@@ -45,7 +61,8 @@ function ChangeTurn()
 			{
 				if BMonsters[i].text_to_draw != ""
 				{
-					create_textbox(BMonsters[i].text_to_draw);
+					create_textbox(BMonsters[i].text_to_draw, 3);
+					monster_talking = true;
 				}
 			}
 			turn_count ++;
@@ -61,6 +78,7 @@ function ChangeTurn()
 			{
 				instance_destroy(objBulletGenerator);
 			}
+			monster_talking = false;
 			turn_count ++;
 			exit;
 		}
@@ -71,21 +89,18 @@ function GetTarget()
 {
 	with(objBulletBoard)
 	{
-		
 		target[0] = BMonsters[fight_mons_pos];
-	
 	}
 }
 
 function EndBattle()
 {
 	with(objBulletBoard)
-	{
-		
+	{	
 		var _exp = 0;
 		var _gold = 0;
 		
-		//Killed monsters reward
+		//Killed monsters 
 		for(var i = 0; i < array_length(killed_monsters); i++)
 		{	
 			if killed_monsters[i].Defeated 
@@ -96,7 +111,7 @@ function EndBattle()
 			}
 		}
 		
-		//Spared monsters reward
+		//Spared monsters 
 		for(var i = 0; i < array_length(spared_monsters); i++)
 		{
 		    if spared_monsters[i].Spared
@@ -119,13 +134,12 @@ function EndBattle()
 		gold_string = string(_gold);
 		EXP_string = string(_exp);
 		
-		blb_UI_level = -1
+		blb_UI_level = -1;
 		battle_ended = true;
 		SetSongIngame(noone, 0, 0);
 		LevelUpEXP();
 		if !fled
 		{ 
-
 			create_textbox("Battle - won");
 		}
 	}
@@ -134,26 +148,27 @@ function EndBattle()
 
 function BattleEndTransition()
 {
-	TransitionStart(global.Player.LastRoom, sqFadeOut, sqFadeIn, objPlayer.last_room_x, objPlayer.last_room_y);
+	TransitionStart(rmTestRoom, sqFadeOut, sqFadeIn, objPlayer.last_room_x, objPlayer.last_room_y);
 }
 
 function PerformPlayerAttack()
 {
-
+	//Play the animation
+	
+	//Call the attack function
+	global.Player.Attack.func();
 }
 
-function StartMonsterAttack(_attack)
+function PerformMonsterAttack(_attack)
 {
 	instance_create_depth(0,0, 1, objBulletGenerator, {attack: _attack})
-	
 }
 
 function BattleChangeMonsterHP(_target, _amount)
 {
-	
 	var _missed = false;
 	var _col = c_red;
-	if _amount <= 0 _missed = true;
+	//if _amount <= 0 _missed = true;
 	if _missed
 	{
 		_col = c_grey;
@@ -164,12 +179,9 @@ function BattleChangeMonsterHP(_target, _amount)
 	
 	instance_create_depth(
 	_target.x -15,
-	_target.y + 10,
+	_target.y - 40,
 	_target.depth - 1,
 	objBattleFloatingText,
 	{font: fntBattleMonsterHP, col: _col, text: _amount, target_hp: _target.MonsterHP, target_max_hp: _target.MonsterMaxHP}
 	)
-	
-
-
 }

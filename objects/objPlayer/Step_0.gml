@@ -33,10 +33,10 @@ else if can_move == false
 }
 
 //Step count and check for enemies
-if xspd || yspd != 0
+if (xspd || yspd) != 0
 {
-step_count ++;
-CheckSteps(420);
+	step_count ++;
+	CheckSteps(300);
 }
 
 //set sprite
@@ -98,25 +98,33 @@ if input_check_pressed("confirm") && can_move == true
 	switch(face)
 	{
 		case DOWN:
-		instance_create_depth(objPlayer.x + 1, objPlayer.y + 18, -99999, objPlayerInteractionBox)
+		instance_create_depth(objPlayer.x + 1, objPlayer.y + 18, -99999, objPlayerInteractionBox, { dir: 3 })
 		break;
 	
 		case UP:
-		instance_create_depth(objPlayer.x + 1, objPlayer.y - 4, -99999, objPlayerInteractionBox)
+		instance_create_depth(objPlayer.x + 1, objPlayer.y - 4, -99999, objPlayerInteractionBox, { dir: 1 } )
 		break;
 	
 		case LEFT:
-		instance_create_depth(objPlayer.x - 10, objPlayer.y + 13, -99999, objPlayerInteractionBox)
+		instance_create_depth(objPlayer.x - 10, objPlayer.y + 13, -99999, objPlayerInteractionBox, { dir: 2 })
 		objPlayerInteractionBox.image_angle = 90
 		objPlayerInteractionBox.image_xscale = 0.6
 		break;
 	
 		case RIGHT:
-		instance_create_depth(objPlayer.x + 10, objPlayer.y + 13, -99999, objPlayerInteractionBox)
+		instance_create_depth(objPlayer.x + 10, objPlayer.y + 13, -99999, objPlayerInteractionBox, { dir: 0 })
 		objPlayerInteractionBox.image_angle = 90
 		objPlayerInteractionBox.image_xscale = 0.6
 		break;
 	}
 }
+
+//Open menu
+if input_check_pressed("menu") 
+{
+	CallGameMenu();
+}
+
+
 
 

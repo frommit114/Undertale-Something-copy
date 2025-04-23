@@ -4,15 +4,19 @@
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"objPlayerInteractionBox","path":"objects/objPlayerInteractionBox/objPlayerInteractionBox.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"objNPC",
   "overriddenProperties":[],
   "parent":{
-    "name":"NPC's",
-    "path":"folders/Objects/Overworld/NPC's.yy",
+    "name":"Interactebles",
+    "path":"folders/Objects/Overworld/Interactebles.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"objWall",
+    "path":"objects/objWall/objWall.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

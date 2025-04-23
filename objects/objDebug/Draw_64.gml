@@ -1,4 +1,4 @@
-draw_set_font(fntMainSmall)
+draw_set_font(fntMain)
 if global.debug == true
 {
 	if instance_exists(objPlayer)
@@ -12,6 +12,4 @@ if global.debug == true
 	}
 	draw_text(0, 100, "current rm " + room_get_name(room))
 	draw_text(0, 120, "last rm " + room_get_name(global.Player.LastRoom))
-	draw_text(400, 0, "camera x:" + string(objCamera.camX));
-	draw_text(400, 20, "camera y:" + string(objCamera.camY));
 }

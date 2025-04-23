@@ -161,7 +161,7 @@ function CutsceneMoveCharacter()
 function CutsceneMoveCamera(argument0 = 0, argument1 = 0, argument2 = true, argument3 = 1)
 {
 	var target_x = argument0, target_y = argument1, relative = argument2, spd = argument3;
-	with(objCamera2)
+	with(objCamera)
 	{
 		//set the follow variable back to noone, so the camera doesnt stays locked in the players postion
 		follow = noone;

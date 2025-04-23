@@ -1,4 +1,3 @@
-sprite_index = item.sprite
 var _s = id
 
 if place_meeting(x, y, objPlayerInteractionBox) && !instance_exists(objTextbox) && objPlayer.can_move == true

@@ -5,5 +5,3 @@ battle related:
 Other:
 -functional saving and loading for weapons and armor
 
-stuff for the future:
-cutscenes

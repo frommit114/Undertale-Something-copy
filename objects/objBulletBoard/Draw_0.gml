@@ -4,12 +4,6 @@ border_r = (320 + current_x_offset) + (current_width / 2);
 border_u = (380 + current_y_offset) - current_height;
 border_d = (380 + current_y_offset);
 
-if instance_exists(objPlayerSoul)
-{
-	objPlayerSoul.x = clamp(objPlayerSoul.x, border_l + 10, border_r - 10);
-	objPlayerSoul.y = clamp(objPlayerSoul.y, border_u + 10, border_d - 10);
-}
-
 
 //Draw Background for battle
 draw_sprite(battle_background, 0, 0, 0)
@@ -19,18 +13,13 @@ draw_rectangle(border_l - 6, border_u - 6, border_r + 6, border_d + 6, false);
 draw_set_color(c_black);
 draw_rectangle(border_l, border_u, border_r, border_d, false);
 
-
-//Draws "HP" text
-draw_set_font(fntWidgets);
-draw_set_color(c_white);
-draw_text(250, 397, "HP");
-
 //Draws the battle text
-if blb_UI_level == 0 && !instance_exists(objTextbox) && current_width == default_width && current_height == default_height
+if (blb_UI_level == 0 && !instance_exists(objTextbox) && current_width == default_width && current_height == default_height)
 {
-create_textbox("Test Battle");
-objTextbox.can_advance = false;
+	create_textbox("Test Battle");
 }
+
+if blb_UI_level != 0 && !battle_ended && !acting && !used_item && !monster_talking {instance_destroy(objTextbox)};
 
 draw_set_font(fntBig)
 switch (blb_UI_level)
@@ -78,7 +67,7 @@ switch (blb_UI_level)
 	    var column = a div 2; // 3 columns
 	    var row = a mod 2;    // 2 rows
 		
-		draw_text(border_l + 50 + (row * 300), border_u + (column * 30) + 15, "* " + BMonsters[act_mons_pos].Acts[a].act_name);
+		draw_text_color(border_l + 50 + (row * 300), border_u + (column * 30) + 15, "* " + BMonsters[act_mons_pos].Acts[a].act_name, c_white, c_white, c_white, c_white, 1 );
 	
 		if a == current_act_index
 		{
@@ -107,7 +96,7 @@ switch (blb_UI_level)
 	var _c = c_white;
 	for (var i = 0; i < monster_length; i ++)
 	{
-		if BMonsters[i].CanSpare == true
+		if BMonsters[i].CanSpare 
 		{
 			_c = c_yellow;
 		}
@@ -121,7 +110,7 @@ switch (blb_UI_level)
 		}
 		if array_length(spare_op) == 2
 		{
-			draw_text(border_l + 50, border_u + 50, "* " + spare_op[1]);
+			draw_text_color(border_l + 50, border_u + 50, "* " + spare_op[1], c_white, c_white, c_white, c_white, 1);
 			if mercy_pos == 1
 			{
 				draw_sprite_ext(sprSoul, 0, border_l + 30,  border_u + 66, 1, 1, 0, c_white, 1 );
@@ -132,9 +121,8 @@ switch (blb_UI_level)
 
 }
 
-if blb_UI_level == 1 || blb_UI_level == 2
+if blb_UI_level == 1 
 {
-	
 	//Draws Monster HP bar
 	for (var i = 0; i < monster_length; i++) 
 	{
@@ -147,9 +135,12 @@ if blb_UI_level == 1 || blb_UI_level == 2
 			draw_rectangle(470, 263 + (35 * i), 470 + percent, 280 + (35 * i), false);
 		}
 	}
-
 }
-if blb_UI_level != 0 && !battle_ended && !acting && !used_item {instance_destroy(objTextbox)};
+
+//Draws "HP" text
+draw_set_font(fntWidgets);
+draw_set_color(c_white);
+draw_text(250, 397, "HP");
 
 //Draws HP bar
 var hp_barwidth = global.Player.MaxHP * 1.6;

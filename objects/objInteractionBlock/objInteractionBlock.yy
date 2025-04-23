@@ -9,8 +9,8 @@
   "name":"objInteractionBlock",
   "overriddenProperties":[],
   "parent":{
-    "name":"Dialogue system",
-    "path":"folders/Objects/Dialogue system.yy",
+    "name":"Interactebles",
+    "path":"folders/Objects/Overworld/Interactebles.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -28,31 +28,35 @@ if (current_y_offset > board_y_offset) {
 }
 #endregion
 
+//clamp soul to the board borders
+if instance_exists(objPlayerSoul)
+{
+	objPlayerSoul.x = clamp(objPlayerSoul.x, border_l + 10, border_r - 10);
+	objPlayerSoul.y = clamp(objPlayerSoul.y, border_u + 10, border_d - 10);
+}
 
-
+battle_state();
+/*
 if active_monsters == 0 && !battle_ended
 {
 	EndBattle();
-	
 }
 
 //Delete monsters from array
 for (var i = 0; i < monster_length; i ++)
 {
-
 	if BMonsters[i].Defeated || BMonsters[i].Spared
 	{
 		array_delete(BMonsters, i, 1);
 		monster_length --;
 		i = 0;
 	}
-
 }
 
 if enemy_attacking && !instance_exists(objBulletGenerator) && !battle_ended && !instance_exists(objTextbox)
 {
-	instance_create_depth(current_width/2, current_height/2, depth -1, objPlayerSoul);
-	StartMonsterAttack(BMonsters[irandom_range(0, monster_length -1)].Attacks[irandom_range(0, 1)]);	
+	instance_create_depth(border_l + current_width/2, border_u + current_height/2, depth -1, objPlayerSoul);
+	PerformMonsterAttack(BMonsters[irandom_range(0, monster_length -1)].Attacks[irandom_range(0, 0)]);	
 }
 
 for(var i = 0; i < monster_length; i++)
@@ -74,19 +78,17 @@ bt_accept_key = input_check_pressed("confirm") || keyboard_check_pressed(vk_ente
 //Sounds
 if (bt_right_key || bt_left_key || bt_down_key || bt_up_key) && blb_UI_level > 0
 {
- audio_play_sound(sndMenuMove, 1, false); 
+	 audio_play_sound(sndMenuMove, 1, false); 
 }
 if bt_accept_key && blb_UI_level > 0
 {
- audio_play_sound(sndSelect, 1, false); 
+	audio_play_sound(sndSelect, 1, false); 
 }
-
 
 
 //Move through submenus 
 switch(blb_UI_level)
 {
-
 	case 0 :
 	break;
 	
@@ -159,7 +161,6 @@ switch(blb_UI_level)
 	break;
 	
 	break;
-
 }
 
 //Perform submenu specific action
@@ -169,7 +170,7 @@ switch(blb_UI_level)
 	if bt_accept_key 
 	{	
 		GetTarget();
-		BattleChangeMonsterHP(target[0], global.Player.ATK + 50);
+		PerformPlayerAttack();
 		ChangeTurn();
 	}
 	break;

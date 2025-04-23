@@ -8,6 +8,7 @@ target_song_asset = noone;
 song_fade_in_instance_vol = 1;
 current_song = noone;
 last_song = noone;
+last_song_end_time = 0;
 
 //volume
 global.sfx_volume = 1;

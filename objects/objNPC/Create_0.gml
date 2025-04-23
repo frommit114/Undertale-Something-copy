@@ -1,9 +1,11 @@
 char = "";
-npc_spr = 0;
 spr_down = 0;
 spr_up = 0;
 spr_left = 0;
 spr_right = 0;
-text_id = "";
+current_sprite = spr_down;
+image_speed = 0;
+sprite_index = spr_down;
+text_id = [""];
 npc_interaction_count = 0;
 npc_interacted = false;

@@ -9,7 +9,7 @@ switch (_text_id) {
 		scr_text("* This is a text!");
 		scr_text("* This is a very very very very     very very very very long text!");
 		scr_text("* And now, a text with a lot of     dots...");
-		scr_text("* Lots of dots. . . . . . . . .     . . . .");
+		scr_text("* Lots of dots. . . . . . . . . . . . .");
 		break;
 		
 		case "npc 1- after interaction":
@@ -195,7 +195,7 @@ switch (_text_id) {
 		break;
 		
 		default:
-		scr_text("* No text found within this case!  *	Make sure you tipped it correctly")
+		scr_text("* No text found within this case!  *	Make sure you tipped it in correctly")
 		break;
 		
 

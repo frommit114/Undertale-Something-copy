@@ -1,17 +1,16 @@
-if attack.spawn_timer == 0 && bullets_spawned <= attack.bullets_to_spawn
+if attack.SpawnTimer == 0 && bullets_spawned <= attack.NumberToSpawn
 {
 		 var _y = irandom_range(250, 380)
-		 bullet = instance_create_depth(attack.bullet_spawn_x, _y, objBulletBoard.depth - 1, objBullet);
-		 bullet.hspeed = attack.bullet_hspeed;
-		 bullet.vspeed = attack.bullet_vspeed;
-		 bullet.direction = attack.bullet_dir;
+		 bullet = instance_create_depth(attack.SpawnX, _y, objBulletBoard.depth - 1, attack.ObjToSpawn);
+		 bullet.hspeed = attack.Hspeed;
+		 bullet.vspeed = attack.Vspeed;
+		 bullet.direction = attack.ObjDir;
 		 bullets_spawned ++;
-		 attack.spawn_timer = bullet_spawn_time;
-
+		 attack.SpawnTimer = bullet_spawn_time;
 }
 else 
 {
-	attack.spawn_timer --;
+	attack.SpawnTimer --;
 }
 
 

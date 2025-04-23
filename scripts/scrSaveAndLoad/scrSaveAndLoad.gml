@@ -64,6 +64,16 @@ function SAVE()
 	
 	buffer_save(_buffer, _filename);
 	buffer_delete(_buffer);
+	
+	//Save controls
+	var _string = input_system_export(true, true);
+	
+	var _buffer = buffer_create(1024, buffer_grow, 1);
+	buffer_write(_buffer, buffer_text, _string);
+	
+	buffer_save_ext(_buffer, "controls.json", 0, buffer_tell(_buffer));
+	
+	buffer_delete(_buffer);
 }
 
 function LOAD()
@@ -103,6 +113,26 @@ function LOAD()
 		//Config
 		global.music_volume = global.SaveData.SaveMusVol;
 		global.sfx_volume = global.SaveData.SaveSFXVol;
+		
+	//Load controls
+	if file_exists("controls.json")
+	{
+		var _buffer buffer_load("controls.json");
+		var _control_data = buffer_read(_buffer, buffer_text);
+		buffer_delete(_buffer);
+	
+		 if (not input_system_verify(_control_data))
+	    {
+	        //We failed to validate the controls so force a reset of the control scheme
+        
+	    }
+	    else
+	    {
+	        //Otherwise load as planned
+	        input_system_import(_control_data);
+		}
+	}
+		
 	
 	//go to the correct room
 	var _LoadRoom = asset_get_index(global.SaveData.SaveRoom);
@@ -112,6 +142,4 @@ function LOAD()
 	objPlayer.face = global.SaveData.SaveFace;
 	objPlayer.can_move = true;
 	objPlayer.visible = true;
-
-
 }

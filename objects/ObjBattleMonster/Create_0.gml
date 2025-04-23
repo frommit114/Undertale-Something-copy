@@ -1,2 +1,3 @@
-sprite_index = MonsterSprites.idle;
-text_to_draw = "";
+sprite_index = MonsterSprites.Idle;
+text_to_draw = "Game Over";
+talking = false;

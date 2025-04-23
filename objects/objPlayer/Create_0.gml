@@ -26,7 +26,8 @@ show_exclamation = false;
 step_count = 0;
 
 //set the camera to follow the player
-objCamera2.follow = objPlayer;
+objCamera.follow = objPlayer;
+objCamera.camera_mode = 0;
 
 //Interaction box alarm
 alarm[0] = 45;

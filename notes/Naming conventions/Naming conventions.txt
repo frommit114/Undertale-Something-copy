@@ -2,3 +2,5 @@ for object variables use all_lower
 for macros ALL_UPPER
 for data and structs UperCamelCase
 for the rest lowerCamelCase
+
+not even i follow this

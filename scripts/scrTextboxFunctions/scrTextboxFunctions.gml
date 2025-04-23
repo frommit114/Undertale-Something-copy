@@ -80,29 +80,25 @@ function scr_shake_text(_start, _end, _shake_timer_min = 4, _shake_timer_max = 8
 /// @param last_char
 function scr_break_line(_start, _end)
 {
-
 	for (var c = _start; c <= _end; c++) 
 	{
-
 		break_line[c, page_number -1] = true;
-		
 	}
-
 }
 
 /// @param 1st_char
 /// @param last_char
 /// @param text_speed
-function scr_text_speed(_start, _end, _speed, _sound_delay)
+function scr_text_speed(_start, _end, _speed, _sound_timer)
 {
-
-		for (var c = _start; c <= _end; c++) 
+	with(objTextbox)
 	{
-
-		objTextbox.text_spd = _speed
-		objTextbox.sound_delay = _sound_delay
+		for (var c = _start; c <= _end; c++) 
+		{
+			text_spd = _speed;
+			sound_timer = _sound_timer;
+		}
 	}
-
 }
 
 
@@ -202,13 +198,14 @@ function scr_option(_option, _link_id)
 }
 
 /// @param text_id
-function create_textbox(_text_id) 
+function create_textbox(_text_id, _call_type = 0) 
 {
 	if !instance_exists(objTextbox)
 	{
-	with (instance_create_depth(0, 0, -15999, objTextbox))
+			with (instance_create_depth(0, 0, -15999, objTextbox))
 	        {
 				scrGameText(_text_id);
+				call_type = _call_type;
 			}
 	}
 }

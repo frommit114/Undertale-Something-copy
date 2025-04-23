@@ -81,13 +81,11 @@ if confirm_key && menu_can_move == true
 	case 3 :
 	
 	//Settings
-	
 	if (menu_level != 1)  
 	{
 		instance_create_depth(vx + 100, vy + 100, -16000, objSettingsMenu)
 		menu_level += 1;
 	}
-	
 	
 	break;
 	}

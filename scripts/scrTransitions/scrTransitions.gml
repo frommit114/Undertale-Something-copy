@@ -67,8 +67,16 @@ room_goto(global.RoomTarget);
 
 function TransitionFinished()
 {
-
-layer_sequence_destroy(self.elementID);
-global.MidTransition = false;
-
+	layer_sequence_destroy(self.elementID);
+	global.MidTransition = false;
 }
+
+global.BattleTransitionData = 
+[
+	[],
+	[],
+	[],
+	[],
+]
+
+
