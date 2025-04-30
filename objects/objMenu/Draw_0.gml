@@ -1,4 +1,7 @@
-draw_sprite_stretched(sprBox, 0, x - margin, y - margin, width_full, height_full);
+if bg_sprite != noone
+{
+	draw_sprite_stretched(bg_sprite, 0, x - margin, y - margin, width_full, height_full);
+}
 
 draw_set_font(fntMenu);
 draw_set_color(c_white);
@@ -23,4 +26,9 @@ for( l = 0; l < (options_count + _desc); l++)
 		}
 		draw_text(x + options_margin, y + l * height_line, _str);
 	}
+}
+
+if menu_type == 1
+{
+	draw_sprite_stretched(sprBox, 0, x - 10, y - 75, 80, 60)
 }

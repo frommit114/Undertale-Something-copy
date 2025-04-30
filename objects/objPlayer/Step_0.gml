@@ -122,7 +122,7 @@ if input_check_pressed("confirm") && can_move == true
 //Open menu
 if input_check_pressed("menu") 
 {
-	CallGameMenu();
+	CreateGameMenu();
 }
 
 

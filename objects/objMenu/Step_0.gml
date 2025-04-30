@@ -6,7 +6,7 @@ op_pos += _down_key - _up_key;
 if (op_pos > options_count - 1) op_pos = 0;
 if (op_pos < 0) op_pos = options_count-1;
 
-if last_pos != op_pos
+if (_down_key||_up_key) && last_pos != op_pos
 {
 	audio_play_sound(sndMenuMove, 1, false);
 }

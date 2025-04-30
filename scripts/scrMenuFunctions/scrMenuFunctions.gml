@@ -1,4 +1,4 @@
-function CallGameMenu()
+function CreateGameMenu()
 {
 	CreateMenu
 	(
@@ -12,11 +12,12 @@ function CallGameMenu()
 		["SETTINGS", -1]
 	],
 	-1,
-	1
+	1,
+	sprBox
 	)
 }
 
-function CreateMenu(_x = global.CameraX, _y = global.CameraY, _width = -1, _height = -1 ,_options, _description = -1, _type = 0)
+function CreateMenu(_x = global.CameraX, _y = global.CameraY, _width = -1, _height = -1 ,_options, _description = -1, _type = 0, _bg_sprite = noone)
 {	
 	if (!instance_exists(objMenu))
 	{
@@ -27,6 +28,7 @@ function CreateMenu(_x = global.CameraX, _y = global.CameraY, _width = -1, _heig
 			options = _options;
 			description = _description;
 			menu_type = _type;
+			bg_sprite = _bg_sprite;
 			options_count = array_length(_options);
 			options_margin = 10;
 			hover_marker = sprSmallSoul;
