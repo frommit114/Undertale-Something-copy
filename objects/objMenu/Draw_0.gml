@@ -28,7 +28,20 @@ for( l = 0; l < (options_count + _desc); l++)
 	}
 }
 
-if menu_type == 1
+switch(menu_type)
 {
-	draw_sprite_stretched(sprBox, 0, x - 10, y - 75, 80, 60)
+	case 0:
+	break;
+	
+	case 1:
+	//Draw box for player info
+	draw_sprite_stretched(sprBox, 0, x - 10, y - 75, width_full, 60);
+	//Player info
+	draw_set_color(c_white);
+	draw_text(x, y - 68, global.Player.Name);
+	draw_set_font(fntMini);
+	draw_text(x, y - 50, "LV:   " + string(global.Player.LOVE));
+	draw_text(x, y - 40, "HP:  " + string(global.Player.HP) + "/" + string(global.Player.MaxHP));
+	draw_text(x, y - 30, "G:    " + string(global.Player.Gold));
+	break;
 }
