@@ -1,9 +1,34 @@
+board_width = 560;
+board_height = 140;
+current_width = 560;
+current_height = 140;
+default_width = 560;
+default_height = 140;
+board_x_offset = 0;
+board_y_offset = 0;
+current_x_offset = 0;
+current_y_offset = 0;
+depth = -15998;
+
+
 units = [];
+turn = 0;
+unit_turn_order = [];
+
+turn_count = 0;
+current_turn = 0;
+round_count = 0;
+battle_wait_time_frames = 30;
+battle_wait_time_remaining = 0;
+action_has_selected = false;
+current_action = -1;
+targets = [];
+current_targets = noone;
 
 //Monster position params
 monster_x = 180 + (20 * array_length(units));
 monster_y = 130;
-
+monster_sep = 20;
 
 //make ze monsters
 for (var m = 0; m < array_length(monsters); m++)
@@ -12,6 +37,9 @@ for (var m = 0; m < array_length(monsters); m++)
 	array_push(units, BMonsters[m]);
 }
 
+unit_turn_order = array_shuffle(units);
+
+
 function BattleStateSelectAction()
 {
 	if global.Player.HP <= 0
@@ -19,10 +47,7 @@ function BattleStateSelectAction()
 		battle_state = BattleStateVictoryCheck;
 		exit;
 	}
-	else 
-	{
-		BeginAction(global.PlayerAttacks.BasicAttack, target[0]);
-	}
+	
 }
 
 function BeginAction(_action, _targets)
@@ -31,6 +56,7 @@ function BeginAction(_action, _targets)
 	current_targets = _targets;
 	if !(is_array(current_targets)) current_targets = [current_targets];
 	battle_wait_time_remaining = battle_wait_time_frames;
+	performing_action = true;
 	battle_state = BattleStatePerformAction;
 }
 

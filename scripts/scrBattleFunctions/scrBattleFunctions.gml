@@ -6,7 +6,7 @@ function NewEncounter(_monsters, _bg)
 		0,
 		0,
 		-15999,
-	    objBulletBoard,
+	    objBattleManager,
 		{monsters: _monsters, battle_background: _bg}
 		
 	);

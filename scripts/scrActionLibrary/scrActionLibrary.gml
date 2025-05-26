@@ -6,7 +6,7 @@ global.PlayerAttacks =
 		func : function(_targets)
 		{
 			var _damage = 50
-			BattleChangeMonsterHP(objBulletBoard.target[0], _damage)
+			BattleChangeMonsterHP(objBattleManager.targets[0], _damage)
 		}
 	}
 }
