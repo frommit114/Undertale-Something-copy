@@ -1,5 +1,6 @@
 battle related:
 - make the attack change accordingly with the player weapon
+-REDO THE ENTIRE BATTLE SYSTEM YEAAAHHH
 
 
 Other:
